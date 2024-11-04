@@ -8,9 +8,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
+
+    @FXML
+    public Spinner version;
 
     @FXML
     private TableView<Usuario> tableView;
@@ -40,9 +44,9 @@ public class HelloController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        usuarios = FXCollections.observableArrayList();
         tableView.setItems(usuarios);
         plataforma.setItems(FXCollections.observableArrayList("Windows", "Mac", "Linux"));
+        version.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 2, 3));
     }
 
     @FXML
@@ -50,10 +54,13 @@ public class HelloController implements Initializable {
         String email = emailTextField.getText();
         String platform = plataforma.getValue();
         boolean isAdmin = admin.isSelected();
-        String software
-
-        Usuario nuevoUsuario = new Usuario(email, platform, isAdmin);
+        Integer version = (Integer) this.version.getValue();
+        Date fecha = new Date(
+                System.currentTimeMillis()
+        );
+        Usuario nuevoUsuario = new Usuario(email, platform, isAdmin, version, fecha);
         usuarios.add(nuevoUsuario);
+        tableView.setItems(usuarios);
         tableView.refresh();
         System.out.println("Añadir usuario: " + email + ", Plataforma: " + platform + ", Administrador: " + isAdmin);
     }

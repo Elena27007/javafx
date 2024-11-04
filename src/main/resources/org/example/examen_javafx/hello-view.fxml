@@ -36,9 +36,9 @@
                <children>
                   <TableView fx:id="tableView" layoutX="-1.0" layoutY="42.0" prefHeight="272.0" prefWidth="355.0">
                      <columns>
-                        <TableColumn fx:id="correoColumn" prefWidth="75.0" text="Correo" />
-                        <TableColumn fx:id="plataformaColumn" prefWidth="75.0" text="Plataforma" />
-                        <TableColumn fx:id="adminColumn" prefWidth="75.0" text="Administrador" />
+                        <TableColumn prefWidth="75.0" text="Correo" />
+                        <TableColumn prefWidth="75.0" text="Plataforma" />
+                        <TableColumn prefWidth="75.0" text="Administrador" />
                      </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
